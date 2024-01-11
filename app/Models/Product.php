@@ -18,7 +18,7 @@ class Product extends Model
 }
 
 /*
-// Get all records
+// Get all records 
 Product::all()
 
 // Limit the record
