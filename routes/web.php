@@ -18,10 +18,13 @@ use App\Http\Resources\CategoryResource;
 */
 
 Route::get('/', function () {
+    return redirect('categories');
     return view('welcome');
 });
 
 Route::get('/products', function(){
+    return request()->page;
+    // return request()->except('per_page', 'dir');
     return "<h1>All Products</h1>";
 });
 
@@ -31,6 +34,10 @@ Route::get('/products/create', function(){
 
 Route::get('/products/{product}', function($product){
     return "<h1>Product {$product}</h1>";
+});
+
+Route::get('/categories', function(){
+    return response()->json(["Category 1","Category 2"]);
 });
 
 
