@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 class ProductSeeder extends Seeder
 {
     /**
@@ -12,12 +13,13 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
+        $faker = Faker::create();
         $products = [];
 
         foreach(range(1,20) as $index){
             $products[]=[
-            'name' => "Product $index",
-            'price'=> rand(1,10) * 10,
+            'name' => $faker->sentence,
+            'price'=> $faker->randomDigitNot(0) *100,
             'category_id'=>rand(3,5),
             'created_at' => now(),
             'updated_at' => now(),

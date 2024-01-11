@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 class CategorySeeder extends Seeder
 {
     /**
@@ -12,11 +13,12 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
+        $faker = Faker::create();
         $categories = [];
 
         foreach(range(1,5) as $index){
             $categories[]=[
-                'name'=> "Category $index",
+                'name'=> $faker->text(20),
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
