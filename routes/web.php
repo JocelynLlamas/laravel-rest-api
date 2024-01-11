@@ -20,3 +20,17 @@ use App\Http\Resources\CategoryResource;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/products', function(){
+    return "<h1>All Products</h1>";
+});
+
+Route::get('/products/create', function(){
+    return "<h1>Add new Product</h1>";
+});
+
+Route::get('/products/{product}', function($product){
+    return "<h1>Product {$product}</h1>";
+});
+
+
