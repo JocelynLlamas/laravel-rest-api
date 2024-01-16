@@ -23,18 +23,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', function(){
-    $products = ModelsProduct::orderby('name')->get();
-    return ProductResource::collection($products);
-});
+Route::get('/products', 'ProductController@index');
+Route::post('/products', 'ProductController@store');
 
 Route::get('/products/create', function(){
     return view('products.create');
 });
 
-Route::get('/products/{product}', function($product){
-    return view('products.show',compact('product'));
-});
+Route::get('/products/{product}', 'ProductController@show');
+Route::put('/products/{product}', 'ProductController@update');
+Route::delete('/products/{product}', 'ProductController@destroy');
 
 Route::get('/categories', function(){
     return response()->json(["Category 1","Category 2"]);
