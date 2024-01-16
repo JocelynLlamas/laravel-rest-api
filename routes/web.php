@@ -5,6 +5,7 @@ use App\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\CategoryResource;
+use App\Models\Product as ModelsProduct;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +24,8 @@ Route::get('/', function () {
 });
 
 Route::get('/products', function(){
-    $products = [
-        ['id' => 1, 'name' => "Product 1", "price" => 100],
-        ['id' => 2, 'name' => "Product 2", "price" => 200],
-    ];
-    return view('products.index', compact('products'));
+    $products = ModelsProduct::orderby('name')->get();
+    return ProductResource::collection($products);
 });
 
 Route::get('/products/create', function(){
