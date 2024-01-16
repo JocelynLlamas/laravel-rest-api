@@ -31,34 +31,18 @@ class ProductController extends Controller
     public function store()
     {
         // Validation
-        $data = request()->all();
-        
-        $product = Product::create($data);
+        $data = $this->validateRequest();
+
+        $product = Product::create($data); 
 
         return new ProductResource($product);
     }
-
-    // public function store()
-    // {
-    //     // Validation
-    //     $data = $this->validateRequest();
-
-    //     $product = Product::create($data); 
-
-    //     return new ProductResource($product);
-    // }
     
     public function update(Product $product)
     {
-        // $data = $this->validateRequest();
+        $data = $this->validateRequest();
 
-        // $product->update($data); 
-
-        // return new ProductResource($product);
-
-        $data = request()->all();
-        
-        $product->update($data);
+        $product->update($data); 
 
         return new ProductResource($product);
     }
